@@ -1,0 +1,83 @@
+openapi: 3.0.1
+info:
+  title: API para consultar items de ML y almacenarlos.
+  description: >-
+    Esta API se ancarga de consultar algunos items de ML y los almacena en una
+    base de datos en la nube.
+  version: 1.0.0
+servers:
+  - url: http://127.0.0.1:5000/
+tags:
+  - name: items
+    description: Gestiona los items de ML que se van a procesar
+paths:
+  /challenge:
+    post:
+      tags:
+        - items
+      summary: >-
+        Obtiene información de un un archivo, consulta una serie de APIs
+        públicas de ML y cargar una base de datos con los datos consultados.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BodyItemsPost'
+        required: true
+      responses:
+        '200':
+          description: Success The process ended successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExitoItemsPost'
+        '400':
+          $ref: '#/components/responses/Error'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /deleteitems:
+    delete:
+      tags:
+        - items
+      summary: Elimina los registros en la base de datos.
+      responses:
+        '200':
+          description: (OK) El cliente se eliminÃ³ correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExitoItemsPost'
+        '400':
+          $ref: '#/components/responses/Error'
+        '500':
+          $ref: '#/components/responses/ServerError'
+components:
+  responses:
+    Error:
+      description: >-
+        (Error) Cuando se presenta una excepción se retorna el mensaje
+        correspondiente.
+    ServerError:
+      description: Error en servidor
+  schemas:
+    BodyItemsPost:
+      type: object
+      properties:
+        route:
+          type: string
+          description: ruta y nombre del archivo a consultar
+        format:
+          type: string
+          description: formato del archivo
+        separator:
+          type: string
+          description: caracter que separa los datos en el archivo
+        encoding:
+          type: string
+          description: encoding del archivo
+    ExitoItemsPost:
+      type: object
+      properties:
+        Success:
+          type: string
+          description: Mensaje de finalización exitosa

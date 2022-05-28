@@ -1,0 +1,27 @@
+version: "3.7"
+services:
+  mysql:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mysql
+    restart: always
+    ports:
+      - 23306:3306
+    enviroment:
+      MYSQL_ROOT_PASSWORD: "pass123098"
+      MYSQL_DATABASE: "db_challenge"
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: "userpass1232098"
+    volumens:
+      - ./schemas:var/lib/mysql:rw
+    networks:
+      mysql_network:
+        aliases:
+          - mysql_host
+volumes:
+  schemas: {}
+networks:
+  mysql_network:
+    name: mysql_net
+    driver: bridge

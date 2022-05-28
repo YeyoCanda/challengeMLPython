@@ -1,0 +1,6 @@
+{
+    "route" : "./technical_challenge_data",
+    "format": "csv",
+    "separator": ",",
+    "encoding" : "cp1252"
+}
