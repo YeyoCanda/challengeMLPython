@@ -16,18 +16,19 @@ Mi maquina no es personal, así que tengo algunas restricciones y no puedo actua
 
 DESAFIO TEORICO:
 
-Procesos, hilos y corrutinas 
+Procesos, hilos y corrutinas
+
 •	Un caso en el que usarías procesos para resolver un problema y por qué. 
 
-R:
+R: Cuando necesite utilizar algunas tareas que se pueden paralelizar pero requieren los recursos completos.
 
 •	Un caso en el que usarías threads para resolver un problema y por qué. 
 
-R:
+R: Cuando necesite procesar tareas en paralelo que pueden compartir los recursos de una máquina.
 
 •	Un caso en el que usarías corrutinas para resolver un problema y por qué. 
 
-R:
+R:Cuando necesite procesar tareas que no pueden esperar y compartir sus recursos con otras tareas que los puedan necesitar.
 
 Optimización de recursos del sistema operativo 
 Si tuvieras 1.000.000 de elementos y tuvieras que consultar para cada uno de ellos información en una API HTTP. ¿Cómo lo harías? Explicar. 
